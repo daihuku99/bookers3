@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bookers3</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+      <header>
+        <h1 class="header-text">Bookers</h1>
+          <ul class="header-lists">
+            <% if user_signed_in? %>
+                <li class="header-list">Home</li>
+                <li class="header-list">Users</li>
+                <li class="header-list">Books</li>
+                <li class="header-list">logout</li>
+            <% else %>
+                <li class="header-list">Home</li>
+                <li class="header-list">About</li>
+                <li class="header-list">sign up</li>
+                <li class="header-list">login</li>
+            <% end %>
+          </ul>
+      </header>
+    <%= yield %>
+  </body>
+</html>
