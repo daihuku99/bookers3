@@ -1,0 +1,12 @@
+<h1>User info</h1>
+	<%= form_for(@user) do |f| %>
+	 <%= render 'layouts/error_messages', model: f.object %>
+		<label>Name</label>
+		<%= f.text_field :name, autofocus: true %>
+		<label>Introduction</label>
+		<%= f.attachment_field :profile_image, placeholder: "ファイルが選択されていません" %>
+		<%= f.text_field :introduction, autofocus: true %>
+		<%= f.submit 'Update User' %>
+	<% end %>
+
+	

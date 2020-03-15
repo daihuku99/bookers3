@@ -14,15 +14,15 @@
         <h1 class="header-text">Bookers</h1>
           <ul class="header-lists">
             <% if user_signed_in? %>
-                <li class="header-list">Home</li>
-                <li class="header-list">Users</li>
-                <li class="header-list">Books</li>
-                <li class="header-list">logout</li>
+                <li class="header-list"><%= link_to 'Home', user_path(current_user.id) %></li>
+                <li class="header-list"><%= link_to 'Users', users_path %></li>
+                <li class="header-list"><%= link_to 'Books', books_path %></li>
+                <li class="header-list"><%= link_to 'logout', destroy_user_session_path, method: :delete %></li>
             <% else %>
-                <li class="header-list">Home</li>
-                <li class="header-list">About</li>
-                <li class="header-list">sign up</li>
-                <li class="header-list">login</li>
+                <li class="header-list"><%= link_to 'Home', '/' %></li>
+                <li class="header-list"><%= link_to 'About', about_path %></li>
+                <li class="header-list"><%= link_to 'sign up', new_user_registration_path %></li>
+                <li class="header-list"><%= link_to 'login', new_user_session_path %></li>
             <% end %>
           </ul>
       </header>

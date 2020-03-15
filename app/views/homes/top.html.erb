@@ -1,8 +1,9 @@
 <h1>Top</h1>
 
-<% if user_signed_in? %>
 
-<%= link_to "logout", destroy_user_session_path, method: :delete %>
 
-<% end %>
+<%= link_to "login", new_user_session_path %>
+<%= link_to "sign_up", new_user_registration_path %>
+
+
 

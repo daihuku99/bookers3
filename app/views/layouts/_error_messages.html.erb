@@ -1,7 +1,8 @@
-<% if book.errors.any? %>
+<% if model.errors.any? %>
 	<div class="alert alert-warning">
 		<ul>
-			<% book.errors.full_messages.each do |message| %>
+			<h3><%= model.errors.count %>error prohibited this obj from being saved:</h3>
+			<% model.errors.full_messages.each do |message| %>
 			<li><%= message %></li>
 			<% end %>
 		</ul>
