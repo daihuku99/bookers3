@@ -5,17 +5,29 @@ class Users::SessionsController < Devise::SessionsController
 
   # GET /resource/sign_in
   # def new
-  #   super
+  # #   super
   # end
 
   # POST /resource/sign_in
   # def create
-  #   super
+  # #   super
+  #   user = user.find_by(name: params[:name].downcase)
+  #   if user && user.authenticate(params[:password])
+  #     log_in user
+  #     flash[:notice] = "Signed in successfully."
+  #     redirect_to user_path(current_user.id)
+  #   else
+  #     redirect_to new_user_session_path
+  #   end
   # end
 
   # DELETE /resource/sign_out
   # def destroy
-  #   super
+  # #   super
+  #   session.delete(:user_id)
+  #   @current_user = nil
+  #   flash[:notice] = "Signed out successfully"
+  #   redirect_to :root
   # end
 
   # protected
