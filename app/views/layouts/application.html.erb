@@ -21,7 +21,7 @@
                 <li class="header-list"><%= link_to 'logout', destroy_user_session_path, method: :delete, class:"glyphicon glyphicon-log-out icon" %></li>
             <% else %>
                 <li class="header-list"><%= link_to 'Home', '/', class:"glyphicon glyphicon-home icon" %></li>
-                <li class="header-list"><%= link_to 'About', about_path,class:"glyphicon glyphicon-link icon" %></li>
+                <li class="header-list"><%= link_to 'About', about_path, class:"glyphicon glyphicon-link icon" %></li>
                 <li class="header-list"><%= link_to 'sign up', new_user_registration_path, class:"glyphicon glyphicon-edit icon" %></li>
                 <li class="header-list"><%= link_to 'login', new_user_session_path, class:"glyphicon glyphicon-log-in icon" %></li>
             <% end %>

@@ -22,6 +22,7 @@
 							<td><%= link_to 'Show', user %></td>
 						</tr>
 					<% end %>
+					<%= paginate @users, class:"paginate" %>
 				</tbody>
 			</table>
 	  </div>

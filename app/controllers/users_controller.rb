@@ -2,14 +2,14 @@ class UsersController < ApplicationController
 	before_action :authenticate_user!
   before_action :correct_user, only: [:edit, :update]
   def index
-  	@users = User.all
+  	@users = User.page(params[:page]).reverse_order
   	@user = User.find(current_user.id)
   	@book_new = Book.new
   end
 
   def show
   	@user = User.find(params[:id])
-  	@books = @user.books
+  	@books = @user.books.page(params[:page]).reverse_order
   	# Book.where(user_id: @user.id)
   	@book_new = Book.new
   end

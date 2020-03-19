@@ -3,6 +3,9 @@
 		<%= flash[:notice] %>
 	</div>
 <% end %>
+
+<h1 class="jquery">Hello jQuery!</h1>
+
 <div class="container">
 	<div class="row">
 	  <div class="col-xs-3">
@@ -30,6 +33,7 @@
 							<td><%= book.body %></td>
 						</tr>
 					<% end %>
+					<%= paginate @books, class:"paginate" %>
 				</tbody>
 			</table>
 	  </div>

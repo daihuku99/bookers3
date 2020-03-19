@@ -28,6 +28,7 @@
 							<td><%= book.body %></td>
 						</tr>
 					<% end %>
+					<%= paginate @books, class:"paginate" %>
 				</tbody>
 			</table>
 	  </div>
