@@ -9,6 +9,17 @@ class ApplicationController < ActionController::Base
 		"/"
 	end
 
+	def search
+    	@user_or_book = params[:option]
+    	if @user_or_book == "1"
+      		@users = ApplicationRecord.search(params[:search], @user_or_book)
+    	else
+      		@books = ApplicationRecord.search(params[:search], @user_or_book)
+    	end
+    	@user = User.find(current_user.id)
+  		@book_new = Book.new
+  	end
+
 	protected
 	def configure_permitted_parameters
 		devise_parameter_sanitizer.permit(:sign_up, keys: [:email])

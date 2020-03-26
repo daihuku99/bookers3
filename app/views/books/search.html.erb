@@ -1,0 +1,23 @@
+<h1>Book Search</h1>
+
+<%= form_with url: search_books_path, method: :get, local: true do |f| %>
+	<%= f.text_field :title %>
+	<%= f.submit :search %>
+<% end %>
+
+
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>Books</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @books.each do |book| %>
+		<tr>
+			<th><%= link_to book.title, book_path(book) %></th>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
