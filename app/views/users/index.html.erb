@@ -5,13 +5,12 @@
 	  </div>
 	  <div class="col-xs-9">
 		<h1>Users</h1>
-
 		<table class="table table-striped">
 				<thead>
 				  <tr>
 					  <th>image</th>
 					  <th>name</th>
-					  <th colspan="3"></th>
+					  <th colspan="5"></th>
 				  </tr>
 				</thead>
 				<tbody>
@@ -20,6 +19,12 @@
 						  	<td><%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpeg" %></td>
 							<td><%= user.name %></td>
 							<td><%= link_to 'Show', user %></td>
+							<td><%= "id: #{user.id} email: #{user.email}" %></td>
+							<% if current_user.following?(user) %>
+								<td><%= link_to 'フォローを外す', unfollow_path(user.id), method: :post %></td>
+							<% else %>
+								<td><%= link_to 'フォローする', follow_path(user.id), method: :post %></td>
+							<% end %>
 						</tr>
 					<% end %>
 					<%= paginate @users, class:"paginate" %>
