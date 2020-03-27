@@ -27,13 +27,15 @@
             <% end %>
           </ul>
       </header>
-      <div class="search-wrapper">
-          <%= form_tag(search_path, :method => 'get') do %>
-            <%= select_tag(:option, options_for_select([["user", "1"],["book","2"]])) %>
-            <%= text_field_tag :search %>
-            <%= submit_tag 'Search' %>
-          <% end %>
-      </div>
+      <% if user_signed_in? %>
+        <div class="search-wrapper">
+            <%= form_tag(search_path, :method => 'get') do %>
+              <%= select_tag(:option, options_for_select([["user", "1"],["book","2"]])) %>
+              <%= text_field_tag :search %>
+              <%= submit_tag 'Search' %>
+            <% end %>
+        </div>
+      <% end %>
     <%= yield %>
   </body>
 </html>
