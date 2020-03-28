@@ -44,11 +44,9 @@
 							<%#<%= "id: #{user.id} email: #{user.email}" %>
 							<td><%= attachment_image_tag user, :profile_image, :fill, 30, 30, fallback: 'no_image.jpg' %></td>
 							<td><%= user.name %></td>
-							<% if current_user.following?(user) %>
-									<td><%= link_to 'フォロー外す', unfollow_path(user.id), method: :post %></td>
-								<% else %>
-									<td><%= link_to 'フォローする', follow_path(user.id), method: :post %></td>
-							<% end %>
+							<div class="relationships_buttons_<%= user.id %>">
+								<td><%= render partial: 'relationships/relationship', locals: { user: user} %></td>
+							</div>
 							<td><%= link_to 'show', user_path(user) %></td>
 						</tr>
 					<% end %>
@@ -66,13 +64,11 @@
 						<tr>
 							<%#<%= "id: #{user.id} email: #{user.email}" %>
 							<td><%= attachment_image_tag user, :profile_image, :fill, 30, 30, fallback: 'no_image.jpg' %></td>
-							<tr><%= user.name %></tr>
-							<% if current_user.following?(user) %>
-								<tr><%= link_to 'フォロー外す', unfollow_path(user.id), method: :post %></tr>
-							<% else %>
-								<tr><%= link_to 'フォローする', follow_path(user.id), method: :post %></tr>
-							<% end %>
-							<tr><%= link_to 'show', user_path(user) %></tr>
+							<td><%= user.name %></td>
+							<div class="relationships_buttons_<%= user.id %>">
+								<td><%= render partial: 'relationships/relationship', locals: { user: user} %></td>
+							</div>
+							<td><%= link_to 'show', user_path(user) %></td>
 						</tr>
 					<% end %>
 				</tbody>
