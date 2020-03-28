@@ -20,11 +20,9 @@
 							<td><%= user.name %></td>
 							<td><%= link_to 'Show', user %></td>
 							<%#<%= "id: #{user.id} email: #{user.email}" %>
-							<% if current_user.following?(user) %>
-								<td><%= link_to 'フォローを外す', unfollow_path(user.id), method: :post %></td>
-							<% else %>
-								<td><%= link_to 'フォローする', follow_path(user.id), method: :post %></td>
-							<% end %>
+							<td class="relationships_buttons_<%= user.id %>">
+								<%= render partial: 'relationships/relationship', locals: { user: user} %>
+							</td>
 						</tr>
 					<% end %>
 					<%= paginate @users, class:"paginate" %>

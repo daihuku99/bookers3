@@ -24,7 +24,7 @@
 			   	 <td><%= link_to @user.name, @book.user %></td>
 				 <td><%= @book.title %></td>
 				 <td><%= @book.body %></td>
-				 <td>いいね</td>
+				 <td><%= @book.favorites.count %>いいね</td>
 				 <% if @book.user == current_user %>
 				 <td><%= link_to"Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？" %></td>
 				 <td><%= link_to"Edit", edit_book_path(@book.id) %></td>
@@ -32,6 +32,36 @@
 			   </tr>
 			</tbody>
 		</table>
+		<div class="comment-wrapper">
+			<div class="comment-text">
+				<h6><%= @book.comments.count %>comments</h6>
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Comment</th>
+							<th>Date</th>
+							<th colspan="3"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @book.comments.each do |comment| %>
+						<tr>
+							<td><%= comment.user.name %><br></td>
+							<td><%= comment.comment %><br></td>
+							<td><%= comment.created_at.strftime('%Y/%m/%d') %><br></td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+			<div class="comment-form">
+				<%= form_for [@book, @comment] do |f| %>
+					<%= f.text_area :comment %>
+					<%= f.submit 'Create Comment' %>
+				<% end %>
+			</div>
+		</div>
 	  </div>
 	</div>
 </div>

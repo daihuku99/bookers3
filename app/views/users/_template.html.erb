@@ -7,11 +7,9 @@
 		<%= "フォロー数: #{@user.follower.count}" %><br>
 		<%= "フォロワー数: #{@user.followed.count}" %><br>
 		<% unless @user == current_user %>
-			<% if current_user.following?(@user) %>
-				<%= link_to 'フォロー外す', unfollow_path(@user.id), method: :post %>
-			<% else %>
-				<%= link_to 'フォローする', follow_path(@user.id), method: :post %>
-			<% end %>
+			<div class="relationships_buttons_<%= user.id %>">
+				<%= render partial: 'relationships/relationship', locals: { user: user} %>
+			</div>
 		<% end %>
 		<% if user.id == current_user.id %>
 			<%= link_to edit_user_path(user), class:"btn btn-default btn-new" do %>
