@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :books, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :favorite_books, through: :favorites
+  # has_many :favorite_books, through: :favorites
   has_many :comments, dependent: :destroy
   has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
@@ -17,9 +17,6 @@ class User < ApplicationRecord
   validates :introduction, length: {maximum: 50 }
   validates :name, presence: true, length: {maximum: 20, minimum: 2 }
 
-  def favorited_by?(user)
-    favorites.where(user_id: user_id).exists?
-  end
 
   def follow(user_id)
     follower.create(followed_id: user_id)

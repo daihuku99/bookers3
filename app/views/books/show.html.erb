@@ -26,8 +26,8 @@
 				 <td><%= @book.body %></td>
 				 <td><%= @book.favorites.count %>いいね</td>
 				 <% if @book.user == current_user %>
-				 <td><%= link_to"Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？" %></td>
-				 <td><%= link_to"Edit", edit_book_path(@book.id) %></td>
+					 <td><%= link_to"Destroy", book_path(@book.id), method: :delete, "data-confirm" => "本当に消しますか？" %></td>
+					 <td><%= link_to"Edit", edit_book_path(@book.id) %></td>
 				 <% end %>
 			   </tr>
 			</tbody>
@@ -41,25 +41,27 @@
 							<th>Name</th>
 							<th>Comment</th>
 							<th>Date</th>
-							<th colspan="3"></th>
+							<th></th>
+							<th colspan="4"></th>
 						</tr>
 					</thead>
 					<tbody>
 						<% @book.comments.each do |comment| %>
-						<tr>
-							<td><%= comment.user.name %><br></td>
-							<td><%= comment.comment %><br></td>
-							<td><%= comment.created_at.strftime('%Y/%m/%d') %><br></td>
+						<tr id="comments_<%= comment.id %>">
+							<div>
+								<%= render partial: 'comments/index', locals: {comment: comment} %>
+							</div>
+							<% if comment.user == current_user %>
+							<td><%= link_to 'delete', book_comments_path(@book), method: :delete, "data-confirm" => "本当に消しますか？" %></td>
+							<% end %>
 						</tr>
 						<% end %>
+						<tr id="text"></tr>
 					</tbody>
 				</table>
 			</div>
 			<div class="comment-form">
-				<%= form_for [@book, @comment] do |f| %>
-					<%= f.text_area :comment %>
-					<%= f.submit 'Create Comment' %>
-				<% end %>
+				<%= render partial: 'comments/form', locals: {book: @book, comment: @comment} %>
 			</div>
 		</div>
 	  </div>
