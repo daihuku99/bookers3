@@ -52,7 +52,7 @@
 								<%= render partial: 'comments/index', locals: {comment: comment} %>
 							</div>
 							<% if comment.user == current_user %>
-							<td><%= link_to 'delete', book_comments_path(@book), method: :delete, "data-confirm" => "本当に消しますか？" %></td>
+							<td><%= link_to 'delete', book_comment_path(@book, comment), method: :delete, "data-confirm" => "本当に消しますか？" %></td>
 							<% end %>
 						</tr>
 						<% end %>
