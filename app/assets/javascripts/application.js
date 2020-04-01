@@ -13,15 +13,13 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+//= require jquery
+//= require moment
+//= require fullcalendar
 
-// var title = "javascriptが使えました";
-// alert(title);
 
-// $(document).ready(function () {
-// 	$('.jquery').on('click', function(){
-// 		$(this).css('color','red');
-// 	});
-// });
+$(() => {
+	$('#calendar').fullcalendar({});
+})

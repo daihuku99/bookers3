@@ -79,3 +79,9 @@ gem 'pry-byebug', group: :development
 gem 'rb-readline'
 
 gem 'font-awesome-sass', '~> 5.4.1'
+
+gem 'jquery-rails'
+
+gem 'fullcalendar-rails'
+
+gem 'momentjs-rails'
