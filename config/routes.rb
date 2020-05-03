@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update, :index]
 
+  resources :events
+
   get "search" => "users#search"
 
   post 'follow/:id' => 'relationships#follow', as: 'follow'
