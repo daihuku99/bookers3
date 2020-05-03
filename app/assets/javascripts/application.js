@@ -20,6 +20,19 @@
 //= require fullcalendar
 
 
-$(() => {
-	$('#calendar').fullcalendar({});
-})
+$(function () {
+	function eventCalendar(){
+		return $('#calendar').fullCalendar({});
+	};
+	function clearCalendar() {
+		$('#calendar').html('');
+	};
+	$(document).on('turbolinks:load', function (){
+		eventCalendar();
+	});
+	$(document).on('turbolinks:before-cahe', clearCalendar);
+
+	$('#calendar').fullCalendar({
+		events: '/events.json'
+	});
+});
